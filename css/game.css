@@ -1,0 +1,108 @@
+.content {
+  margin: 40px;
+  height: 470px;
+
+  color: white;
+  font-size: 21px;
+  font-family: "MontserratLight";
+  text-align: center;
+
+  background-color: #4db8ec;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-image: url("assets/images/menu-background.png");
+  background-position: 0px -30px;
+}
+
+.content .overlay {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .text {
+  width: 430px;
+  text-align: center;
+  align-content: center;
+  margin: 60px;
+  font-family: Open Sans, Arial, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Helvetica, sans-serif;
+  align-self: center;
+  max-width: 460px;
+  font-size: 21px;
+}
+
+.content .start-buttons {
+  margin: 20px;
+}
+
+.countdown {
+  background-color: rgba(195, 195, 195, 0.3);
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+}
+
+.content .countdown {
+  text-align: center;
+  align-content: center;
+  margin-top: 180px;
+  font-weight: 600;
+  font-size: 24px;
+  font-family: "MontserratBold";
+}
+
+.countdown h1 {
+  margin: 0px;
+}
+
+.info-bar {
+  background-color: #94d4f4;
+  position: relative;
+  top: 0;
+  width: 445px;
+  height: 35px;
+}
+
+.task {
+  background-color: #53bcf1;
+  width: 480px;
+  height: 100px;
+  box-shadow: 0 4px 8px rgba(56, 56, 56, 0.3);
+  margin: 30px;
+  font-size: 16px;
+  align-content: center;
+  text-align: left;
+  padding: 20px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.number {
+  text-align: right;
+  width: 100%;
+  font-family: "MontserratBold";
+  font-size: 50px;
+}
+
+.variants {
+  width: 480px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 200px;
+  background-color: red;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.variant {
+    width: 135px;
+    height: 90px;
+    background-color: green;
+    display: flex;
+    margin-right: 20px;
+}

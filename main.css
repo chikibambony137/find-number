@@ -1,0 +1,142 @@
+:root {
+  background-color: #e2e2e2;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+
+  position: relative;
+  left: 13%;
+  top: 20px;
+
+  width: 1100px;
+
+  box-sizing: border-box;
+}
+
+.game {
+  background-color: white;
+  width: 700px;
+  height: 600px;
+  position: relative;
+  margin-right: 20px;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  box-shadow: 0 0 0 0.5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(56, 56, 56, 0.3);
+}
+
+.about-game {
+  font-family: "MontserratLight";
+  font-size: 12px;
+  width: 350px;
+  height: 250px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.title {
+  width: 100%;
+  height: 134.5px;
+  color: white;
+
+  background-color: #6bb0e7;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  background-image: url("assets/images/title-background.svg");
+  background-position: 50%;
+}
+
+.title .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 134.5px;
+  background: #5d0bb5;
+  background: linear-gradient(
+    90deg,
+    rgba(93, 11, 181, 0.97) 0%,
+    rgba(102, 48, 195, 0.76) 52%,
+    rgba(123, 133, 227, 0.86) 99%
+  );
+
+  align-content: center;
+  text-align: center;
+}
+
+.title h1 {
+  font-family: "MontserratBold";
+  font-size: 36px;
+  margin: 0px;
+}
+
+.title p {
+  font-family: "MontserratLight";
+  margin: 0px;
+}
+
+.description {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description h2 {
+  color: rgb(143, 52, 241);
+  font-family: Montserrat, Open Sans, sans-serif;
+  font-weight: 1000;
+  font-size: 22px;
+  margin: 20px;
+  margin-bottom: 0px;
+}
+
+.list {
+  width: 80%;
+  text-align: left;
+  font-family: Montserrat, Open Sans, sans-serif;
+  color: rgb(56, 56, 56);
+}
+
+.list li {
+  list-style-type: none;
+}
+
+.li-div {
+  display: flex;
+}
+
+.list h3 {
+  margin-bottom: 0px;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.list p {
+  margin-top: 10px;
+}
+
+.next-btn {
+  min-width: 177px;
+  padding: 16px 0;
+  font-family: Open Sans, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  border: 1px solid #6039aa;
+  background-color: #6039aa;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
