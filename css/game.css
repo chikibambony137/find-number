@@ -11,7 +11,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  background-image: url("assets/images/menu-background.png");
   background-position: 0px -30px;
 }
 
@@ -65,6 +64,9 @@
   top: 0;
   width: 445px;
   height: 35px;
+  display: flex;
+  font-size: 20px;
+  padding: 10px;
 }
 
 .task {
@@ -81,7 +83,7 @@
   box-sizing: border-box;
 }
 
-.number {
+#number {
   text-align: right;
   width: 100%;
   font-family: "MontserratBold";
@@ -94,15 +96,20 @@
   flex-direction: row;
   flex-wrap: wrap;
   height: 200px;
-  background-color: red;
+  /* background-color: red; */
   box-sizing: border-box;
   justify-content: space-between;
+  gap: 20px;
 }
 
-.variant {
-    width: 135px;
+#variant, .variant {
+    width: 140px;
     height: 90px;
     background-color: green;
-    display: flex;
-    margin-right: 20px;
+
+    text-align: center;
+    font-family: "MontserratBold";
+    font-size: 40px;
+    align-content: center;
+
 }
