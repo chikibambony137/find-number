@@ -23,9 +23,7 @@ function countdown() {
 }
 
 function generateNumber() {
-  const variants = document.querySelectorAll(
-    ".variant, #variant, .dop-variant"
-  );
+  const variants = document.querySelectorAll(".variant-text, #variant-text");
   let numbers = [];
 
   if (level === 1) {
@@ -55,10 +53,10 @@ function generateNumber() {
 
   let randomNumber = Math.floor(Math.random() * numbersRange);
   document.getElementById("number").innerHTML = randomNumber;
-  document.getElementById("variant").innerHTML = randomNumber;
+  document.getElementById("variant-text").innerHTML = randomNumber;
   numbers.push(randomNumber);
 
-  const wrongVariants = document.querySelectorAll(".variant, .dop-variant");
+  const wrongVariants = document.querySelectorAll(".variant-text");
 
   let successInsert = false;
   wrongVariants.forEach((variant) => {
@@ -77,30 +75,37 @@ function generateNumber() {
 }
 
 function generateRandomStyle() {
-  const variants = document.querySelectorAll(
-    ".variant, #variant, .dop-variant"
+  const variants = document.querySelectorAll(".variant, .dop-variant");
+  const variantsText = document.querySelectorAll(
+    ".variant-text, #variant-text"
   );
   const colors = ["#92b55e", "#fc73b0", "#8e3dcb", "#4db8ec", "#f28e37"];
   const animationClasses = ["fadeInOut", "scale", "rotate"];
 
+  index = 0;
   variants.forEach((variant) => {
-    let randomColor = Math.floor(Math.random() * (colors.length));
+    let randomColor = Math.floor(Math.random() * colors.length);
     variant.style.backgroundColor = colors[randomColor];
 
     if (level >= 3) {
-      variant.classList.add(
-        animationClasses[
-          Math.floor(Math.random() * (animationClasses.length))
-        ]
-      );
+      animation = Math.floor(Math.random() * animationClasses.length);
+
+      // если анимация вращения, то применяется только к тексту
+      if (animation === 2) {
+        variantsText[index].classList.add(animationClasses[animation]);
+      } else {
+        variant.classList.add(animationClasses[animation]);
+      }
+      // console.log(animationClasses[animation], index, animation);
     }
+    index++;
     // console.log(colors[randomColor]);
   });
   if (level > 1) {
     const background = document.querySelector(".content");
     const taskBackground = document.querySelector(".task");
     let randomBackgroundColor =
-      colors[Math.floor(Math.random() * (colors.length))];
+      colors[Math.floor(Math.random() * colors.length)];
     background.style.backgroundColor = randomBackgroundColor;
     taskBackground.style.backgroundColor = randomBackgroundColor;
     console.log(randomBackgroundColor);
@@ -135,13 +140,11 @@ function game() {
   let correctAnswers = 0;
   let wrongAnswers = 0;
 
-  const variants = document.querySelectorAll(
-    ".variant, #variant, .dop-variant"
-  );
+  const variants = document.querySelectorAll(".variant-text, #variant-text");
 
   variants.forEach((variant) => {
     variant.addEventListener("click", () => {
-      if (variant.id === "variant") {
+      if (variant.id === "variant-text") {
         correctAnswers++;
         level++;
         console.log("level:", level);
@@ -168,11 +171,17 @@ function game() {
 }
 
 function resetStyle() {
-  const variants = document.querySelectorAll(
-    ".variant, #variant, .dop-variant"
+  const variants = document.querySelectorAll(".variant, .dop-variant");
+  const variantsText = document.querySelectorAll(
+    ".variant-text, #variant-text"
   );
+
   variants.forEach((variant) => {
-    variant.classList.remove("fadeInOut", "scale", "rotate");
+    variant.classList.remove("fadeInOut", "scale");
+  });
+
+  variantsText.forEach((variantText) => {
+    variantText.classList.remove("rotate");
   });
 }
 
