@@ -14,6 +14,7 @@ function countdown() {
       gameDiv.style.backgroundSize = "800px";
       gameDiv.style.backgroundPosition = "-90px 0px";
       overlayDiv.style.display = "none";
+      document.getElementById("gameplay").style.display = "block";
     } else {
       countdownElement.innerHTML = timeLeft;
       timeLeft--;
