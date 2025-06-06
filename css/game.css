@@ -102,14 +102,69 @@
   gap: 20px;
 }
 
-#variant, .variant {
-    width: 140px;
-    height: 90px;
-    background-color: green;
+#variant,
+.variant {
+  width: 140px;
+  height: 90px;
+  background-color: green;
 
-    text-align: center;
-    font-family: "MontserratBold";
-    font-size: 40px;
-    align-content: center;
+  text-align: center;
+  font-family: "MontserratBold";
+  font-size: 40px;
+  align-content: center;
+  user-select: none
+}
 
+#variant:hover,
+.variant:hover {
+  box-shadow: 0px 0px 16px 4px rgba(56, 56, 56, 0.3);
+  cursor: pointer;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeInOut {
+  animation: fadeInOut 0.9s infinite;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.scale {
+  animation: scale 1s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+.rotate {
+  animation: rotate 0.5s infinite;
 }

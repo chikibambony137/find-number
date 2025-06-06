@@ -1,3 +1,5 @@
+let level = 0;
+
 function countdown() {
   let countdownElement = document.getElementById("countdown");
   let timeLeft = 3;
@@ -20,23 +22,56 @@ function countdown() {
 }
 
 function generateNumber() {
+  let numbers = [];
+  numbersRange = 11;
+  if (level === 1) {
+    numbersRange = 101;
+  }
+  if (level >= 2) {
+    numbersRange = 1001;
+  }
 
-  let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-  let randomNumber = Math.floor(Math.random() * 10);
-  document.getElementById("number").innerHTML = numbers[randomNumber];
-  document.getElementById("variant").innerHTML = numbers[randomNumber];
-  numbers.splice(randomNumber, 1);
-
-  console.log(numbers);
+  let randomNumber = Math.floor(Math.random() * numbersRange);
+  document.getElementById("number").innerHTML = randomNumber;
+  document.getElementById("variant").innerHTML = randomNumber;
+  numbers.push(randomNumber);
 
   const variants = document.querySelectorAll(".variant");
-  let index = 0;
-  numbers.forEach((number) => {
-    variants[index].innerHTML = number;
-    numbers.splice(index, 1);
-    console.log(numbers);
-    index++;
+
+  let successInsert = false;
+  variants.forEach((variant) => {
+    while (!successInsert) {
+      if (!numbers.includes(randomNumber)) {
+        variant.innerHTML = randomNumber;
+        numbers.push(randomNumber);
+        successInsert = true;
+        console.log(numbers);
+      } else {
+        randomNumber = Math.floor(Math.random() * numbersRange);
+      }
+    }
+    successInsert = false;
+  });
+}
+
+function generateRandomStyle() {
+  const variants = document.querySelectorAll(".variant, #variant");
+  const colors = ["red", "blue", "green", "black", "yellow", "orange"];
+  const animationClasses = ["fadeInOut", "scale", "rotate"];
+
+  variants.forEach((variant) => {
+    let randomColor = Math.floor(Math.random() * (colors.length - 1));
+    variant.style.backgroundColor = colors[randomColor];
+
+    if (level >= 2) {
+      variant.classList.add(
+        animationClasses[
+          Math.floor(Math.random() * (animationClasses.length - 1))
+        ]
+      );
+    }
+
+    console.log(colors[randomColor]);
   });
 }
 
@@ -64,38 +99,54 @@ function randomizeVariants() {
   });
 }
 
-function game(){
+function game() {
   let correctAnswers = 0;
   let wrongAnswers = 0;
 
-  const variants = document.querySelectorAll('.variant, #variant');
+  const variants = document.querySelectorAll(".variant, #variant");
 
-  variants.forEach(variant => {
-      variant.addEventListener('click', () => {
-          if (variant.id === 'variant') {
-              correctAnswers++;
-              console.log(correctAnswers);
-              document.getElementById('correct').innerHTML = correctAnswers;
-              goNext();
+  variants.forEach((variant) => {
+    variant.addEventListener("click", () => {
+      if (variant.id === "variant") {
+        correctAnswers++;
+        level++;
+        console.log("level:", level);
+        // console.log(correctAnswers);
+        document.getElementById("correct").innerHTML = correctAnswers;
+        resetStyle();
+        goNext();
+      } else {
+        wrongAnswers++;
+        if (level >= 1) {
+          level--;
+        }
+        console.log("level:", level);
+        // console.log(wrongAnswers);
+        document.getElementById("wrong").innerHTML = wrongAnswers;
+        resetStyle();
+        goNext();
+      }
+    });
+  });
+}
 
-          } else {
-              wrongAnswers++;
-              console.log(wrongAnswers);
-              document.getElementById('wrong').innerHTML = wrongAnswers;
-              goNext();
-          }
-      });
+function resetStyle() {
+  const variants = document.querySelectorAll(".variant, #variant");
+  variants.forEach((variant) => {
+    variant.classList.remove("fadeInOut", "scale", "rotate");
   });
 }
 
 function startGame() {
   countdown();
   generateNumber();
+  generateRandomStyle();
   randomizeVariants();
   game();
 }
 
 function goNext() {
   generateNumber();
+  generateRandomStyle();
   randomizeVariants();
 }
