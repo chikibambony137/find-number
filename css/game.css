@@ -59,14 +59,16 @@
 }
 
 .info-bar {
-  background-color: #94d4f4;
+  background-color: #ffffff7b;
   position: relative;
   top: 0;
   width: 445px;
-  height: 35px;
+  height: 15px;
   display: flex;
   font-size: 20px;
   padding: 10px;
+  color: black;
+  font-size: 10px;
 }
 
 .task {
@@ -93,7 +95,6 @@
 .variants {
   width: 480px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   height: 200px;
   /* background-color: red; */
@@ -103,20 +104,27 @@
 }
 
 #variant,
-.variant {
-  width: 140px;
-  height: 90px;
-  background-color: green;
+.variant,
+.dop-variant {
+  min-height: 30px;
 
   text-align: center;
   font-family: "MontserratBold";
   font-size: 40px;
   align-content: center;
-  user-select: none
+  user-select: none;
+
+  flex: 1 1 calc(32% - 10px);
+  min-width: 50px;
+}
+
+.dop-variant {
+  display: none;
 }
 
 #variant:hover,
-.variant:hover {
+.variant:hover,
+.dop-variant:hover {
   box-shadow: 0px 0px 16px 4px rgba(56, 56, 56, 0.3);
   cursor: pointer;
 }

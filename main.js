@@ -1,4 +1,4 @@
-let level = 0;
+let level = 1;
 
 function countdown() {
   let countdownElement = document.getElementById("countdown");
@@ -22,13 +22,34 @@ function countdown() {
 }
 
 function generateNumber() {
+  const variants = document.querySelectorAll(
+    ".variant, #variant, .dop-variant"
+  );
   let numbers = [];
-  numbersRange = 11;
+
   if (level === 1) {
-    numbersRange = 101;
+    numbersRange = 11;
+    variants.forEach((variant) => {
+      variant.style.fontSize = "40px";
+    });
   }
-  if (level >= 2) {
+  if (level === 2) {
+    numbersRange = 101;
+    variants.forEach((variant) => {
+      variant.style.fontSize = "40px";
+    });
+  }
+  if (level === 3) {
     numbersRange = 1001;
+    variants.forEach((variant) => {
+      variant.style.fontSize = "40px";
+    });
+  }
+  if (level >= 4) {
+    numbersRange = 10001;
+    variants.forEach((variant) => {
+      variant.style.fontSize = "28px";
+    });
   }
 
   let randomNumber = Math.floor(Math.random() * numbersRange);
@@ -36,16 +57,16 @@ function generateNumber() {
   document.getElementById("variant").innerHTML = randomNumber;
   numbers.push(randomNumber);
 
-  const variants = document.querySelectorAll(".variant");
+  const wrongVariants = document.querySelectorAll(".variant, .dop-variant");
 
   let successInsert = false;
-  variants.forEach((variant) => {
+  wrongVariants.forEach((variant) => {
     while (!successInsert) {
       if (!numbers.includes(randomNumber)) {
         variant.innerHTML = randomNumber;
         numbers.push(randomNumber);
         successInsert = true;
-        console.log(numbers);
+        // console.log(numbers);
       } else {
         randomNumber = Math.floor(Math.random() * numbersRange);
       }
@@ -55,24 +76,34 @@ function generateNumber() {
 }
 
 function generateRandomStyle() {
-  const variants = document.querySelectorAll(".variant, #variant");
-  const colors = ["red", "blue", "green", "black", "yellow", "orange"];
+  const variants = document.querySelectorAll(
+    ".variant, #variant, .dop-variant"
+  );
+  const colors = ["#92b55e", "#fc73b0", "#8e3dcb", "#4db8ec", "#f28e37"];
   const animationClasses = ["fadeInOut", "scale", "rotate"];
 
   variants.forEach((variant) => {
-    let randomColor = Math.floor(Math.random() * (colors.length - 1));
+    let randomColor = Math.floor(Math.random() * (colors.length));
     variant.style.backgroundColor = colors[randomColor];
 
-    if (level >= 2) {
+    if (level >= 3) {
       variant.classList.add(
         animationClasses[
-          Math.floor(Math.random() * (animationClasses.length - 1))
+          Math.floor(Math.random() * (animationClasses.length))
         ]
       );
     }
-
-    console.log(colors[randomColor]);
+    // console.log(colors[randomColor]);
   });
+  if (level > 1) {
+    const background = document.querySelector(".content");
+    const taskBackground = document.querySelector(".task");
+    let randomBackgroundColor =
+      colors[Math.floor(Math.random() * (colors.length))];
+    background.style.backgroundColor = randomBackgroundColor;
+    taskBackground.style.backgroundColor = randomBackgroundColor;
+    console.log(randomBackgroundColor);
+  }
 }
 
 function randomizeVariants() {
@@ -103,7 +134,9 @@ function game() {
   let correctAnswers = 0;
   let wrongAnswers = 0;
 
-  const variants = document.querySelectorAll(".variant, #variant");
+  const variants = document.querySelectorAll(
+    ".variant, #variant, .dop-variant"
+  );
 
   variants.forEach((variant) => {
     variant.addEventListener("click", () => {
@@ -111,18 +144,21 @@ function game() {
         correctAnswers++;
         level++;
         console.log("level:", level);
+        enableDopVariants();
+
         // console.log(correctAnswers);
-        document.getElementById("correct").innerHTML = correctAnswers;
+        document.getElementById("level").innerHTML = level;
         resetStyle();
         goNext();
       } else {
         wrongAnswers++;
-        if (level >= 1) {
+        enableDopVariants();
+        if (level > 1) {
           level--;
         }
         console.log("level:", level);
         // console.log(wrongAnswers);
-        document.getElementById("wrong").innerHTML = wrongAnswers;
+        document.getElementById("level").innerHTML = level;
         resetStyle();
         goNext();
       }
@@ -131,10 +167,26 @@ function game() {
 }
 
 function resetStyle() {
-  const variants = document.querySelectorAll(".variant, #variant");
+  const variants = document.querySelectorAll(
+    ".variant, #variant, .dop-variant"
+  );
   variants.forEach((variant) => {
     variant.classList.remove("fadeInOut", "scale", "rotate");
   });
+}
+
+function enableDopVariants() {
+  const variants = document.querySelectorAll(".dop-variant");
+
+  if (level > 3) {
+    variants.forEach((variant) => {
+      variant.style.display = "block";
+    });
+  } else {
+    variants.forEach((variant) => {
+      variant.style.display = "none";
+    });
+  }
 }
 
 function startGame() {
