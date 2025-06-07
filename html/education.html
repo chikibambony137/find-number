@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../assets/logo.png" />
+    <title>Найди число</title>
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/game.css" />
+    <link rel="stylesheet" type="text/css" href="../css/education.css" />
+    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="game">
+        <div class="content">
+          <div id="gameplay">
+            <div
+              style="
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+              "
+            >
+              <div class="task" style="margin-top: 50px;">
+                <div style="width: 800px">
+                  <h3>Найдите указанное число:</h3>
+                </div>
+                <div id="number">75</div>
+              </div>
+
+              <div class="variants">
+                <div class="variant" style="background-color: #f28e37">
+                  <div class="variant-text">75</div>
+                </div>
+                <div
+                  class="variant"
+                  style="background-color: #fc73b0; opacity: 0.5"
+                >
+                  <div class="variant-text">1</div>
+                </div>
+                <div
+                  class="variant"
+                  style="background-color: #8e3dcb; opacity: 0.5"
+                >
+                  <div class="variant-text">35</div>
+                </div>
+                <div
+                  class="variant"
+                  style="background-color: #92b55e; opacity: 0.5"
+                >
+                  <div class="variant-text">7</div>
+                </div>
+                <div
+                  class="variant"
+                  style="background-color: #92b55e; opacity: 0.5"
+                >
+                  <div class="variant-text">885</div>
+                </div>
+                <div
+                  class="variant"
+                  style="background-color: #4db8ec; opacity: 0.5"
+                >
+                  <div class="variant-text">40</div>
+                </div>
+              </div>
+
+              <div class="hand">
+                <img src="../assets/images/hand.svg">
+              </div>
+
+              <div class="hint">Нажмите на экран, чтобы продолжить</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-game">
+        <h2>А на практике?</h2>
+        Прохождение игры благоприятно сказывается на концентрации внимания,
+        которое способствует выделению нужной фигуры из фона и удержанию этого
+        объекта, в свою очередь это показывает сосредоточение на разных
+        занятиях, выполнение целей и доведение дел до конца.
+      </div>
+    </div>
+
+    <script src="../education.js"></script>
+    <script>
+        education();
+    </script>
+  </body>
+</html>

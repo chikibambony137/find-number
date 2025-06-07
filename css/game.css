@@ -163,13 +163,13 @@
 
 @keyframes rotate {
   0% {
-    transform: rotate(45deg);
+    transform: rotate(20deg);
   }
   50% {
-    transform: rotate(-45deg);
+    transform: rotate(-20deg);
   }
   100% {
-    transform: rotate(45deg);
+    transform: rotate(20deg);
   }
 }
 
