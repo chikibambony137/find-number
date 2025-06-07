@@ -15,6 +15,7 @@ function countdown() {
       gameDiv.style.backgroundPosition = "-90px 0px";
       overlayDiv.style.display = "none";
       document.getElementById("gameplay").style.display = "block";
+      timer();
     } else {
       countdownElement.innerHTML = timeLeft;
       timeLeft--;
@@ -197,6 +198,21 @@ function enableDopVariants() {
       variant.style.display = "none";
     });
   }
+}
+
+function timer() {
+  const time = document.getElementById("time");
+  let timeLeft = 59;
+  const timer = setInterval(() => {
+    if (timeLeft < 0) {
+      clearInterval(timer);
+    } else if (timeLeft >= 10) {
+      time.innerHTML = "00:" + timeLeft;
+    } else {
+      time.innerHTML = "00:0" + timeLeft;
+    }
+    timeLeft--;
+  }, 1000);
 }
 
 function startGame() {
