@@ -144,13 +144,15 @@ function randomizeVariants() {
 }
 
 function game() {
-  const variants = document.querySelectorAll(".variant, .dop-variant, #variant");
+  const variants = document.querySelectorAll(
+    ".variant, .dop-variant, #variant"
+  );
 
   variants.forEach((variant) => {
     variant.addEventListener("click", () => {
       if (variant.id === "variant") {
         correctAnswers++;
-        bonus+=1;
+        bonus += 1;
         score = score + 1 * bonus;
         console.log("level:", level);
         enableDopVariants();
@@ -159,7 +161,7 @@ function game() {
         document.getElementById("level").innerHTML = level;
         document.getElementById("score").innerHTML = score;
         document.getElementById("bonus").innerHTML = bonus;
-        
+
         resetStyle();
         if (timeLeft <= 0) {
           goToResults();
@@ -171,7 +173,7 @@ function game() {
       } else {
         wrongAnswers++;
         enableDopVariants();
-        bonus-=1;
+        bonus -= 1;
         console.log("level:", level);
         // console.log(wrongAnswers);
         document.getElementById("level").innerHTML = level;
@@ -235,9 +237,9 @@ function timer() {
 }
 
 function goToResults() {
-  localStorage.setItem('score', score);
-  localStorage.setItem('correctAnswers', correctAnswers);
-  localStorage.setItem('count', count);
+  localStorage.setItem("score", score);
+  localStorage.setItem("correctAnswers", correctAnswers);
+  localStorage.setItem("count", count);
   window.location.href = "./results.html";
 }
 
@@ -246,14 +248,13 @@ function getResults() {
   correctDiv = document.getElementById("correct");
   precisionDiv = document.getElementById("precision");
 
-  const score = localStorage.getItem('score');
-  const correctAnswers = localStorage.getItem('correctAnswers');
-  const count = localStorage.getItem('count');
+  const score = localStorage.getItem("score");
+  const correctAnswers = localStorage.getItem("correctAnswers");
+  const count = localStorage.getItem("count");
 
   scoreDiv.innerHTML = score;
   correctDiv.innerHTML = correctAnswers + " из " + count;
-  precisionDiv.innerHTML = `${(correctAnswers / count * 100).toFixed(2)}%`; // Округление до 2 знаков
-
+  precisionDiv.innerHTML = `${((correctAnswers / count) * 100).toFixed(2)}%`; // Округление до 2 знаков
 }
 
 function startGame() {

@@ -10,9 +10,9 @@
 }
 
 .title {
-    width: 90%;
+  width: 90%;
   height: 134.5px;
-    margin: 40px;
+  margin: 40px;
 }
 
 .title h1 {
@@ -22,23 +22,23 @@
 }
 
 .results {
-    font-family: Open Sans, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
-    text-align: left;
-    color: #999;
-    width: 300px;
-    height: 150px;
-    display: flex;
-    flex-direction:row;
-    flex-wrap: wrap;
+  font-family: Open Sans, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  text-align: left;
+  color: #999;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .mark {
-    font-weight: bold;
-    margin-left: 50px;
-    text-align: right;
-    color: black;
+  font-weight: bold;
+  margin-left: 50px;
+  text-align: right;
+  color: black;
 }
 
 .next-btn {
-    margin-top: 100px;
+  margin-top: 100px;
 }
