@@ -1,4 +1,10 @@
 let level = 1;
+let timeLeft = 9;
+let score = 0;
+let bonus = 1;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+let count = 1;
 
 function countdown() {
   let countdownElement = document.getElementById("countdown");
@@ -138,34 +144,48 @@ function randomizeVariants() {
 }
 
 function game() {
-  let correctAnswers = 0;
-  let wrongAnswers = 0;
-
-  const variants = document.querySelectorAll(".variant-text, #variant-text");
+  const variants = document.querySelectorAll(".variant, .dop-variant, #variant");
 
   variants.forEach((variant) => {
     variant.addEventListener("click", () => {
-      if (variant.id === "variant-text") {
+      if (variant.id === "variant") {
         correctAnswers++;
-        level++;
+        bonus+=1;
+        score = score + 1 * bonus;
         console.log("level:", level);
         enableDopVariants();
 
         // console.log(correctAnswers);
         document.getElementById("level").innerHTML = level;
+        document.getElementById("score").innerHTML = score;
+        document.getElementById("bonus").innerHTML = bonus;
+        
         resetStyle();
-        goNext();
+        if (timeLeft <= 0) {
+          goToResults();
+        } else {
+          level++;
+          count++;
+          goNext();
+        }
       } else {
         wrongAnswers++;
         enableDopVariants();
-        if (level > 1) {
-          level--;
-        }
+        bonus-=1;
         console.log("level:", level);
         // console.log(wrongAnswers);
         document.getElementById("level").innerHTML = level;
+        document.getElementById("bonus").innerHTML = bonus;
         resetStyle();
-        goNext();
+        if (timeLeft <= 0) {
+          goToResults();
+        } else {
+          if (level > 1) {
+            level--;
+          }
+          count++;
+          goNext();
+        }
       }
     });
   });
@@ -202,7 +222,6 @@ function enableDopVariants() {
 
 function timer() {
   const time = document.getElementById("time");
-  let timeLeft = 59;
   const timer = setInterval(() => {
     if (timeLeft < 0) {
       clearInterval(timer);
@@ -213,6 +232,28 @@ function timer() {
     }
     timeLeft--;
   }, 1000);
+}
+
+function goToResults() {
+  localStorage.setItem('score', score);
+  localStorage.setItem('correctAnswers', correctAnswers);
+  localStorage.setItem('count', count);
+  window.location.href = "./results.html";
+}
+
+function getResults() {
+  scoreDiv = document.getElementById("score");
+  correctDiv = document.getElementById("correct");
+  precisionDiv = document.getElementById("precision");
+
+  const score = localStorage.getItem('score');
+  const correctAnswers = localStorage.getItem('correctAnswers');
+  const count = localStorage.getItem('count');
+
+  scoreDiv.innerHTML = score;
+  correctDiv.innerHTML = correctAnswers + " из " + count;
+  precisionDiv.innerHTML = `${(correctAnswers / count * 100).toFixed(2)}%`; // Округление до 2 знаков
+
 }
 
 function startGame() {

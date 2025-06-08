@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../assets/logo.png" />
+    <title>Найди число</title>
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/game.css" />
+    <link rel="stylesheet" type="text/css" href="../css/results.css" />
+    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="game">
+        <div class="title">
+          <div class="overlay-results">
+            <h1>Ваши результаты</h1>
+          </div>
+        </div>
+        <div class="description">
+            <div class="results">
+                <p>Текущий результат</p><p class="mark" id="score">228</p>
+                <p>Верных ответов</p><p class="mark" id="correct">10 из 10</p>
+                <p>Точность ответов</p><p class="mark" id="precision">10 из 10</p>
+            </div>
+          
+
+          <form action="education.html">
+            <button class="next-btn">Далее</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="about-game">
+        <h2>А на практике?</h2>
+        Прохождение игры благоприятно сказывается на концентрации внимания,
+        которое способствует выделению нужной фигуры из фона и удержанию этого
+        объекта, в свою очередь это показывает сосредоточение на разных
+        занятиях, выполнение целей и доведение дел до конца.
+      </div>
+    </div>
+
+    <script src="../main.js"></script>
+    <script>
+        getResults();
+    </script>
+  </body>
+</html>
