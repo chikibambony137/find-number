@@ -1,5 +1,5 @@
 let level = 1;
-let timeLeft = 9;
+let timeLeft = 59;
 let score = 0;
 let bonus = 1;
 let correctAnswers = 0;
@@ -82,7 +82,7 @@ function generateNumber() {
 }
 
 function generateRandomStyle() {
-  const variants = document.querySelectorAll(".variant, .dop-variant");
+  const variants = document.querySelectorAll(".variant, .dop-variant, #variant");
   const variantsText = document.querySelectorAll(
     ".variant-text, #variant-text"
   );
